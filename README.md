@@ -9,8 +9,6 @@ live monitoring dashboard in under a minute.
 
 ![Jedi DevOps Uptime Monitor Plus — terminal dashboard screenshot](Screenshot1.png)
 
-> 📸 *To add the screenshot: save the image above as `screenshot.png` in the repo root.*
-
 ---
 
 ## Why this exists
