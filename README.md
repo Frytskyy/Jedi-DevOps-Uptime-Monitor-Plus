@@ -8,6 +8,9 @@ Just drop a `.py` file on any machine, edit a JSON config, and you have a
 live monitoring dashboard in under a minute.
 
 ![Jedi DevOps Uptime Monitor Plus — terminal dashboard screenshot](Screenshot1.png)
+![Options screenshot 1](Screenshot2.png)
+![Options screenshot 2](Screenshot3.png)
+![Options screenshot 3](Screenshot4.png)
 
 ---
 
