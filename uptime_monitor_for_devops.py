@@ -2257,12 +2257,17 @@ class JediTerminalControl:
         try:
             partitions = psutil.disk_partitions(all=False)
             for part in partitions:
-                # Skip virtual/snap/loop filesystems on Linux
-                if part.fstype in ('squashfs', 'tmpfs', 'devtmpfs', 'overlay', 'aufs'):
+                # Skip virtual/snap/loop/container filesystems on Linux
+                if part.fstype in ('squashfs', 'tmpfs', 'devtmpfs', 'overlay', 'aufs',
+                                   'sysfs', 'proc', 'devpts', 'cgroup', 'cgroup2',
+                                   'pstore', 'bpf', 'tracefs', 'debugfs', 'hugetlbfs',
+                                   'mqueue', 'ramfs', 'fuse.gvfsd-fuse', 'fuse.portal'):
                     continue
                 if part.device.startswith('/dev/loop'):
                     continue
-                if part.mountpoint.startswith('/snap/'):
+                if part.mountpoint.startswith(('/snap/', '/var/lib/flatpak/',
+                                               '/var/lib/docker/', '/run/',
+                                               '/sys/', '/proc/', '/dev/')):
                     continue
                 try:
                     usage = psutil.disk_usage(part.mountpoint)
