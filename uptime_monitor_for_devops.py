@@ -2257,6 +2257,13 @@ class JediTerminalControl:
         try:
             partitions = psutil.disk_partitions(all=False)
             for part in partitions:
+                # Skip virtual/snap/loop filesystems on Linux
+                if part.fstype in ('squashfs', 'tmpfs', 'devtmpfs', 'overlay', 'aufs'):
+                    continue
+                if part.device.startswith('/dev/loop'):
+                    continue
+                if part.mountpoint.startswith('/snap/'):
+                    continue
                 try:
                     usage = psutil.disk_usage(part.mountpoint)
                 except (PermissionError, OSError):
